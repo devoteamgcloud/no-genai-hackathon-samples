@@ -62,18 +62,19 @@ splits = split_documents(documents)
 RETRIEVER = init_retriever(splits)
 LLM = VertexAI(temperature=0)
 PROMPT = hub.pull("rlm/rag-prompt")
-RAG_CHAIN = (
-    {"context": RETRIEVER | format_docs, "question": RunnablePassthrough()}
-    | PROMPT
-    | LLM
-    | StrOutputParser()
-)
 
 
 @app.route("/", methods=["POST"])
 def chat():
     """Return a response to a question."""
     user_question = request.json["question"]
+
+    RAG_CHAIN = (
+        {"context": RETRIEVER | format_docs, "question": RunnablePassthrough()}
+        | PROMPT
+        | LLM
+        | StrOutputParser()
+    )
 
     output = ""
     for chunk in RAG_CHAIN.stream(user_question):
