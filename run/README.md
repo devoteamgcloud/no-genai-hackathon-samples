@@ -4,7 +4,7 @@ This folder contains a sample Cloud Run service to interact with an LLM.
 To deploy this code to Cloud Run, use the following command:
 
 ```
-gcloud run deploy [SERVICE_NAME] --region europe-west1 --source .
+gcloud run deploy [SERVICE_NAME] --memory 2Gi --region europe-west1 --source .
 ```
 
 If prompted to create an Artifact Registry repository to store artifacts, select yes.
