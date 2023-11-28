@@ -1,0 +1,8 @@
+gunicorn==21.2.0
+google-cloud-aiplatform==1.28.1
+Flask==2.3.2
+db-dtypes==1.1.1
+chromadb==0.4.4
+langchain==0.0.249
+pysqlite3-binary==0.5.1
+transformers==4.31.0
